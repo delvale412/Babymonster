@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -14,6 +15,10 @@ app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="stat
 
 # Configura Templates (HTML)
 templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
+
+# Número de WhatsApp único, usado no botão flutuante e no envio da pré-avaliação.
+# Defina WHATSAPP_NUMBER nas variáveis de ambiente (Vercel/Docker) para trocar sem editar código.
+templates.env.globals["whatsapp_number"] = os.environ.get("WHATSAPP_NUMBER", "5511999999999")
 
 # Rota 1: Home
 @app.get("/", response_class=HTMLResponse)

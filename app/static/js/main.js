@@ -42,10 +42,9 @@ function atualizarVisorIMC() {
 function enviarWhatsapp() {
     const inputPeso = document.getElementById("peso");
     const inputAltura = document.getElementById("altura");
-    
-    // !!! COLOQUE SEU NÚMERO AQUI !!!
-    const numeroWhatsapp = "5511999999999"; 
-    
+
+    const numeroWhatsapp = document.body.dataset.whatsapp;
+
     let mensagem = "";
     
     if (inputPeso && inputAltura && inputPeso.value && inputAltura.value) {
