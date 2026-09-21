@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: site-consultoria
+    volumes:
+      - ./app:/code/app
+    ports:
+      - "8001:8000"
+    environment:
+      - APP_ENV=development

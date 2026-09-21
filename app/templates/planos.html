@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="page-header" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1470&auto=format&fit=crop'); background-size: cover; padding: 100px 0; text-align: center;">
+    <div class="container">
+        <h2 style="font-size: 3rem;">Planos <span class="destaque">Iron Base</span></h2>
+        <p style="color: #ccc; max-width: 600px; margin: 20px auto;">Escolha o nível de acompanhamento ideal para a sua fase.</p>
+    </div>
+</section>
+
+<section style="background-color: var(--bg-section);">
+    <div class="container">
+        <div class="services-grid">
+
+            <div class="price-card">
+                <h4>Essencial</h4>
+                <p class="price-tag">Sob Consulta</p>
+                <ul class="price-list">
+                    <li><i class="fas fa-check"></i> Treino Periodizado</li>
+                    <li><i class="fas fa-check"></i> Ajustes Mensais</li>
+                    <li><i class="fas fa-check"></i> Suporte via WhatsApp</li>
+                </ul>
+                <a href="/consultoria" class="btn-hero" style="width: 100%; text-align: center;">Solicitar Proposta</a>
+            </div>
+
+            <div class="price-card featured">
+                <span class="price-badge">Mais Procurado</span>
+                <h4>Performance</h4>
+                <p class="price-tag">Sob Consulta</p>
+                <ul class="price-list">
+                    <li><i class="fas fa-check"></i> Treino Periodizado</li>
+                    <li><i class="fas fa-check"></i> Dieta Metabólica</li>
+                    <li><i class="fas fa-check"></i> Ajustes Quinzenais</li>
+                    <li><i class="fas fa-check"></i> Suporte Direto Prioritário</li>
+                </ul>
+                <a href="/consultoria" class="btn-hero" style="width: 100%; text-align: center;">Solicitar Proposta</a>
+            </div>
+
+            <div class="price-card">
+                <h4>Elite</h4>
+                <p class="price-tag">Sob Consulta</p>
+                <ul class="price-list">
+                    <li><i class="fas fa-check"></i> Treino + Dieta Individualizados</li>
+                    <li><i class="fas fa-check"></i> Ajustes Semanais</li>
+                    <li><i class="fas fa-check"></i> Check-ins em Vídeo</li>
+                    <li><i class="fas fa-check"></i> Suporte Direto Ilimitado</li>
+                </ul>
+                <a href="/consultoria" class="btn-hero" style="width: 100%; text-align: center;">Solicitar Proposta</a>
+            </div>
+
+        </div>
+        <p class="center" style="margin-top: 50px; color: var(--text-muted);">Valores definidos após a pré-avaliação, de acordo com objetivo e nível de acompanhamento.</p>
+    </div>
+</section>
+{% endblock %}

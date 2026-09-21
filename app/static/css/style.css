@@ -1,0 +1,303 @@
+/* RESET E VARIÁVEIS */
+:root {
+    --bg-dark: #0f1014;
+    --bg-section: #16181d;
+    --accent: #c6a87c;        /* Bronze Premium */
+    --text-white: #f5f5f5;
+    --text-muted: #a0a0a0;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-white);
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5 { font-family: var(--font-heading); color: var(--text-white); }
+a { text-decoration: none; transition: 0.3s; }
+ul { list-style: none; } 
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.destaque { color: var(--accent); font-style: italic; }
+
+/* --- HEADER CENTRALIZADO (PREMIUM) --- */
+header {
+    background-color: rgba(15, 16, 20, 0.98);
+    padding: 25px 0; /* Mais espaço vertical */
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container { 
+    display: flex; 
+    flex-direction: column; /* Empilha Logo e Menu */
+    justify-content: center; 
+    align-items: center; 
+    gap: 15px; /* Espaço entre Logo e Menu */
+}
+
+.logo { 
+    font-size: 2.2rem; /* Logo maior */
+    font-weight: 700; 
+    letter-spacing: 3px;
+    line-height: 1;
+    text-align: center;
+}
+
+/* Menu Centralizado */
+nav ul { 
+    display: flex; 
+    gap: 40px; /* Mais espaço entre os itens */
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    flex-wrap: wrap; /* Garante que não quebre em telas menores */
+}
+
+nav a { 
+    color: var(--text-muted); 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-weight: 400;
+    position: relative;
+}
+
+/* Efeito elegante ao passar o mouse (linha embaixo) */
+nav a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width .3s;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+}
+nav a:hover::after { width: 100%; }
+nav a:hover { color: var(--accent); }
+
+/* Botão Consultoria no Menu */
+.btn-agendar {
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 25px;
+    border-radius: 0; /* Bordas retas são mais sérias */
+}
+.btn-agendar:hover { background-color: var(--accent); color: #000; }
+.btn-agendar::after { display: none; } /* Remove a linha de hover do botão */
+
+/* --- HERO SECTION (AJUSTE FINAL: FOCO NOS PÉS + TEXTO NO TOPO) --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    /* 1. Alinha o conteúdo ao topo do container */
+    align-items: flex-start; 
+    justify-content: center;
+    text-align: center;
+    
+    /* 2. SUBIR TEXTO: Reduzido para apenas 2% da altura da tela */
+    padding-top: 2vh; 
+    
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    /* 3. SHIFT DA IMAGEM: O top negativo "puxa" a imagem inteira para cima */
+    top: 4%; 
+    left: 0; 
+    width: 100%; 
+    /* 4. ALTURA EXTRA: Garante margem de manobra para o zoom sem cortar */
+    height: 110%;
+    z-index: 1;
+
+    background: linear-gradient(rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.85)), 
+                url('../img/home.png');
+    
+    background-size: cover;
+    /* 5. MOSTRAR PÉS: Força o navegador a priorizar a base da foto */
+    background-position: center bottom; 
+    background-repeat: no-repeat;
+
+    /* 6. ZOOM CONTROLADO: Zoom de 10% partindo da base da imagem */
+    transform: scale(1.1);
+    transform-origin: bottom; 
+    
+    transition: transform 0.5s ease;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
+    /* Mantém a animação de entrada que criamos */
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-content { max-width: 800px; }
+.hero h2 { font-size: 4rem; margin-bottom: 20px; line-height: 1.1; }
+.hero p { font-size: 1.3rem; color: #ccc; margin-bottom: 40px; }
+
+.btn-hero {
+    background-color: var(--accent);
+    color: #111;
+    padding: 18px 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    border-radius: 2px;
+}
+.btn-hero:hover { background-color: #e0c496; }
+
+/* --- SEÇÕES GERAIS --- */
+section { padding: 100px 0; }
+.section-title { font-size: 2.5rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+.center { text-align: center; }
+
+/* GRID DE SERVIÇOS */
+.services-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 40px; 
+    margin-top: 60px; 
+}
+.service-card {
+    background-color: rgba(255,255,255,0.02);
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+    text-align: center;
+}
+.service-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+.service-card i { font-size: 2.5rem; color: var(--accent); margin-bottom: 25px; }
+
+/* ESPECIALISTA / CARD */
+.team { background-color: var(--bg-section); }
+.doctor-card {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 50px auto 0;
+}
+.doctor-img {
+    min-width: 250px;
+    height: 250px;
+    background-color: #222; /* Placeholder cinza escuro */
+    /* Se tiver foto, coloque aqui: background-image: url('../img/isaque.jpg'); */
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%; /* Redondo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    color: #333;
+    border: 2px solid var(--accent);
+}
+
+/* --- CALCULADORA DE IMC (Página Consultoria) --- */
+.imc-container {
+    background: rgba(255,255,255,0.03);
+    padding: 50px;
+    border: 1px solid #333;
+    border-radius: 2px;
+}
+.input-dark {
+    width: 100%;
+    padding: 18px;
+    background: #0a0a0a;
+    border: 1px solid #333;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    margin-bottom: 25px;
+    outline: none;
+}
+.input-dark:focus { border-color: var(--accent); }
+
+#resultado-imc {
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(198, 168, 124, 0.15);
+    border-left: 4px solid var(--accent);
+    display: none;
+}
+
+/* --- PLANOS --- */
+.price-card {
+    background-color: rgba(255,255,255,0.02);
+    padding: 40px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.price-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+.price-card.featured { border-color: var(--accent); background-color: rgba(198, 168, 124, 0.05); }
+.price-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent);
+    color: #111;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 6px 16px;
+}
+.price-tag { color: var(--accent); font-size: 1.3rem; margin: 15px 0 25px; }
+.price-list { margin-bottom: 30px; flex-grow: 1; }
+.price-list li { margin-bottom: 12px; color: var(--text-muted); }
+.price-list i { color: var(--accent); margin-right: 10px; }
+
+/* --- FOOTER --- */
+footer { background-color: #050505; padding: 80px 0 30px; font-size: 0.9rem; color: #666; border-top: 1px solid #111; text-align: center;}
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 50px; text-align: left; }
+.footer-col h5 { color: #fff; margin-bottom: 25px; letter-spacing: 1px; font-size: 1rem; }
+.footer-bottom { border-top: 1px solid #111; padding-top: 30px; letter-spacing: 1px; }
+
+/* --- BOTÃO FLUTUANTE WHATSAPP --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.whatsapp-float:hover { background-color: #1ebe57; transform: scale(1.1); }
+
+/* Responsivo */
+@media (max-width: 768px) {
+    nav ul { flex-direction: column; gap: 20px; }
+    .hero h2 { font-size: 2.8rem; }
+    .doctor-card { flex-direction: column; text-align: center; }
+    .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; }
+}
